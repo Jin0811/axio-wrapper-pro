@@ -23,21 +23,22 @@ npm install axios-wrapper-pro
 ### 基本使用
 
 ```typescript
-import { AxiosWrapperPro } from 'axios-wrapper-pro';
+import { AxiosWrapperPro } from "axios-wrapper-pro";
 
 const axiosWrapperPro = new AxiosWrapperPro({
-  baseURL: 'https://api.example.com',
+  baseURL: "https://api.example.com",
   timeout: 10000,
   headers: {
-    'Content-Type': 'application/json'
-  }
+    "Content-Type": "application/json",
+    colorTag: "dev",
+  },
 });
 
 // GET 请求
-const response = await axiosWrapperPro.get('/users');
+const response = await axiosWrapperPro.get("/users");
 
 // POST 请求
-const response = await axiosWrapperPro.post('/users', { name: 'John' });
+const response = await axiosWrapperPro.post("/users", { name: "John" });
 ```
 
 ### 配置重试
@@ -52,16 +53,16 @@ const axiosWrapperPro = new AxiosWrapperPro({
       // 网络错误或 5xx 错误时重试
       if (!error?.response) return true;
       return error?.response?.status >= 500;
-    }
-  }
+    },
+  },
 });
 
 // 单次请求重试配置
-await axiosWrapperPro.get('/users', {
+await axiosWrapperPro.get("/users", {
   retry: {
     count: 2,
-    delay: 500
-  }
+    delay: 500,
+  },
 });
 ```
 
@@ -69,20 +70,20 @@ await axiosWrapperPro.get('/users', {
 
 ```typescript
 // 使用 requestKey 进行请求去重
-const response1 = await axiosWrapperPro.get('/users', {
-  requestKey: 'get-users'
+const response1 = await axiosWrapperPro.get("/users", {
+  requestKey: "get-users",
 });
 // 相同的 requestKey 会取消之前的请求
-const response2 = await axiosWrapperPro.get('/users', {
-  requestKey: 'get-users'
+const response2 = await axiosWrapperPro.get("/users", {
+  requestKey: "get-users",
 });
 
 // 使用 Symbol 作为 requestKey
-const myKey = Symbol('my-request');
-await axiosWrapperPro.get('/data', { requestKey: myKey });
+const myKey = Symbol("my-request");
+await axiosWrapperPro.get("/data", { requestKey: myKey });
 
 // 取消指定请求
-axiosWrapperPro.cancelRequest('get-users');
+axiosWrapperPro.cancelRequest("get-users");
 // 取消所有请求
 axiosWrapperPro.cancelAllRequests();
 ```
@@ -119,16 +120,16 @@ axiosWrapperPro.setResponseInterceptor(
 
 ```typescript
 // 设置单个请求头
-axiosWrapperPro.setHeader('Authorization', 'Bearer token');
+axiosWrapperPro.setHeader("Authorization", "Bearer token");
 
 // 批量设置请求头
 axiosWrapperPro.setHeaders({
-  'X-Custom-Header': 'value',
-  'X-Another-Header': 'value'
+  "X-Custom-Header": "value",
+  "X-Another-Header": "value",
 });
 
 // 移除请求头
-axiosWrapperPro.removeHeader('X-Custom-Header');
+axiosWrapperPro.removeHeader("X-Custom-Header");
 ```
 
 ## API
