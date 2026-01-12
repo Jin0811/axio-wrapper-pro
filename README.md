@@ -15,7 +15,11 @@
 ## 安装
 
 ```bash
+# npm安装
 npm install axios-wrapper-pro
+
+# yarn安装
+yarn add axios-wrapper-pro
 ```
 
 ## 使用方法
