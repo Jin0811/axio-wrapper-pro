@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "publish": "npm publish",
+    "release": "npm publish",
     "test": "npm test"
   },
   "main": "dist/index.js",
