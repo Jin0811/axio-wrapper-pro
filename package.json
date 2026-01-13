@@ -28,9 +28,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jin0811/axios-wrapper-pro.git"
+    "url": "https://github.com/Jin0811/axios-wrapper-pro.git"
   },
-  "homepage": "https://github.com/Jin0811/axio-wrapper-pro",
+  "homepage": "https://github.com/Jin0811/axios-wrapper-pro",
   "peerDependencies": {
     "axios": "*"
   },
